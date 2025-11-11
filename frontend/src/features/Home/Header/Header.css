@@ -5,3 +5,33 @@
         display: block !important;
     }
 }
+
+.main-section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  border-radius: 30px;
+  background: linear-gradient(
+    90deg,
+    rgba(19, 43, 57, 1) 0%,
+    rgba(70, 81, 58, 1) 50%,
+    rgba(27, 76, 71, 1) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
