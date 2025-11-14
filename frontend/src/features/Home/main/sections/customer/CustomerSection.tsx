@@ -1,6 +1,6 @@
 import { Button, Container } from 'react-bootstrap'
-import CustomCard from '../../../components/Home/Card/CustomCard'
 import './CustomerSection.css'
+import CustomCard from '../../../../../shared/Home/Card/CustomCard';
 
 const CustomerSection = () => {
     const cardData = [

@@ -3,12 +3,12 @@ import Button from 'react-bootstrap/esm/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
-import ThemeSwitch from '../../../components/ThemeSwitch/ThemeSwitch';
+import ThemeSwitch from '../../../shared/ThemeSwitch/ThemeSwitch';
 
 function Header() {
     return (
         <header>
-            <Navbar expand="md" className='shadow-sm py-3 mb-5'>
+            <Navbar expand="md" className='shadow-sm py-3 mb-5 position-sticky top-0 bg-body-tertiary' >
                 <Container className='justify-content-between align-items-center'>
                     <Navbar.Brand href="#home">MindCare</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>

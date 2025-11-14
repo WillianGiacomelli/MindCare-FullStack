@@ -1,7 +1,7 @@
 :root ,
 ::root[data-bs-theme='light'] {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --bs-body-bg: #F6F7F8;
+  --bs-body-bg: #ececec;
   --bs-body-color: #1E293B;
   --bs-primary: #13A4EC;
 }
