@@ -32,12 +32,12 @@ const CustomerSection = () => {
             />
         ))}
 
-        <div className='w-100 text-start mt-4'>
+        <div className='w-100 text-start my-4 mb-5'>
             <h3 className='text-bold fs-1 w-75 mb-2'>Para pacientes: Encontre o apoio que você precisa</h3>
             <p>Cuidar da saúde mental nunca foi tão simples. Conte conosco para ajudar você nessa jornada.</p>
             <Button className='flex-sm-column flex-md-row w-sm-100' variant="primary">Buscar psicólogo</Button>
 
-            <div className='mh-400px d-flex justify-content-between align-items-stretch mt-5 flex-wrap gap-4'>
+            <div className='d-flex justify-content-between mt-5 flex-wrap gap-4'>
                 <div className='flex-element'>
                     <img  alt="" className='rounded-5' src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyjnBD5gw6DQmQl7zbNzi1QETzKGusPj0LUILhq98cfYNWEk2imWQA64WBQLWCR2VbGd0GcnljOEROjwH4fONGazS6b7TMsM6dUiBZ7zUHS1U3f4IOKp15Cfx9hLXb9R6hEf5eUuChplpqaeCrc5KL2PyjY0KOAgWSBFYkqPZetfx2TzXFgbVofrfg2RqIz13Ee1t0_tHqGvoDu9GaEr0WChaQM79RdbyzSGZxuXmQKcvT9w0QtybjmSqWKBQE36OLnFNV6ZFUDw6n"/>
                     <h4 className='mt-3 fw-bold'>Encontre</h4>

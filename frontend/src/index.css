@@ -1,12 +1,12 @@
 :root ,
-::root[data-bs-theme='light'] {
+:root[data-bs-theme='light'] {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --bs-body-bg: #ececec;
+  --bs-body-bg: #f0f0f0;
   --bs-body-color: #1E293B;
   --bs-primary: #13A4EC;
 }
 
-::root[data-bs-theme='dark'] {
+:root[data-bs-theme='dark'] {
   --bs-body-bg: #101C22;
   --bs-body-color: #FFFFFF;
   --bs-primary: #13A4EC;
