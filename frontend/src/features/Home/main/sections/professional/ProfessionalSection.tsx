@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import CustomCard from "../../../../../shared/Home/Card/CustomCard";
+import "./ProfessionalSection.css";
 
 const ProfessionalSection = () => {
   const cardData = [
@@ -26,7 +27,7 @@ const ProfessionalSection = () => {
   ];
 
   return (
-    <div className="bg-white w-100 text-start mt-5 py-5 px-2">
+    <div className="bg-white-personalized w-100 text-start mt-5 py-5 px-2">
       <Container>
         <h3 className="text-bold fs-1 w-75 mb-2">
           Para psicólogos : Expanda sua prática e alcance mais pacientes
