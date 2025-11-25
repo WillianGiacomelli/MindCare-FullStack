@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
 import ThemeSwitch from '../../../shared/ThemeSwitch/ThemeSwitch';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -20,7 +21,7 @@ function Header() {
                     <div className='d-sm-block d-md-flex gap-3 align-items-center'> 
                         <ThemeSwitch />
                         <Button className='flex-sm-column flex-md-row w-sm-100' variant="outline-info">Encontrar Psicólogo</Button>   
-                        <Button className='flex-sm-column flex-md-row w-sm-100' variant="primary">Entrar</Button>
+                        <Link to="/login"><Button className='flex-sm-column flex-md-row w-sm-100' variant="primary">Entrar</Button></Link>
                     </div>
                     </Navbar.Collapse>
                 </Container>
