@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
-import CustomCard from "../../../../../shared/Home/Card/CustomCard";
 import "./ProfessionalSection.css";
+import CustomCard from "../../../../../../shared/Home/Card/CustomCard";
 
 const ProfessionalSection = () => {
   const cardData = [

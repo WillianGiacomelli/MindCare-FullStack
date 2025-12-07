@@ -1,5 +1,5 @@
 import React from "react";
-import FooterDefault from "../../../shared/Home/Footer/Footer";
+import FooterDefault from "../../../../shared/Home/Footer/Footer";
 
 const Footer = () => {
   return (

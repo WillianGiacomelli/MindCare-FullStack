@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/esm/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
-import ThemeSwitch from '../../../shared/ThemeSwitch/ThemeSwitch';
 import { Link } from 'react-router-dom';
+import ThemeSwitch from '../../../../shared/ThemeSwitch/ThemeSwitch';
 
 function Header() {
     return (
