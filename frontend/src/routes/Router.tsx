@@ -9,11 +9,7 @@ import PsychologistDashboard from '../pages/main/dashboard/psychologist/Psycholo
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />, // layout principal
-    // children: [
-    //   { index: true, element: <Home /> },
-    //   { path: "about", element: <About /> },
-    // ],
+    element: <Home />,
   },
   {
     path: "login",
