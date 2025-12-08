@@ -47,9 +47,10 @@ const RegisterPsychologist = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   {/* Nome */}
                   <div className="mb-3">
-                    <label className="form-label">Nome Completo</label>
+                    <label className="form-label" htmlFor="nome">Nome Completo</label>
                     <input
                       type="text"
+                      id="nome"
                       className={`form-control ${errors.nome ? 'is-invalid' : ''}`}
                       placeholder="Ex: Ana Souza"
                       {...register("nome", { required: true })}
@@ -59,9 +60,10 @@ const RegisterPsychologist = () => {
 
                   {/* E-mail */}
                   <div className="mb-3">
-                    <label className="form-label">E-mail</label>
+                    <label className="form-label" htmlFor="email">E-mail</label>
                     <input
                       type="email"
+                      id="email"
                       className="form-control"
                       placeholder="email@exemplo.com"
                       {...register("email", { required: true })}
@@ -85,9 +87,10 @@ const RegisterPsychologist = () => {
                   {/* CRP - Conditional */}
                   {isPsychologist && (
                     <div className="mb-3">
-                      <label className="form-label">Registro CRP</label>
+                      <label className="form-label" htmlFor="crp">Registro CRP</label>
                       <input
                         type="text"
+                        id="crp"
                         className={`form-control ${errors.crp ? 'is-invalid' : ''}`}
                         placeholder="06/12345"
                         {...register("crp", { required: isPsychologist })}
@@ -99,9 +102,10 @@ const RegisterPsychologist = () => {
 
                   {/* Senha */}
                   <div className="mb-4">
-                    <label className="form-label">Senha</label>
+                    <label className="form-label" htmlFor="senha">Senha</label>
                     <input
                       type="password"
+                      id="senha"
                       className="form-control"
                       placeholder="******"
                       {...register("senha", { required: true, minLength: 6 })}

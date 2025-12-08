@@ -11,10 +11,14 @@ const Login = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log('Login submitting...');
         const result = await login(email, password);
+        console.log('Login result:', result);
         if (result.success) {
+            console.log('Navigating to /');
             navigate('/'); // Will be handled by HomeRedirect
         } else {
+            console.log('Showing alert');
             alert(result.message || 'Falha no login');
         }
     };
