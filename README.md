@@ -7,7 +7,7 @@ MindCare é uma solução completa (Full Stack) para conectar psicólogos e paci
 ## 🚀 Tecnologias e Stack Tecnológico
 
 ### Backend (Microsserviços)
-*   **Framework:** .NET 8 (C#)
+*   **Framework:** .NET 10 (C#)
 *   **Banco de Dados:** SQL Server (Entity Framework Core)
 *   **Autenticação:** ASP.NET Core Identity + JWT (JSON Web Tokens)
 *   **Arquitetura:** Microservices (AuthService, ScheduleService, NotesService)
@@ -25,7 +25,7 @@ MindCare é uma solução completa (Full Stack) para conectar psicólogos e paci
 *   **Framework:** React Native (Expo SDK)
 *   **Navegação:** React Navigation (Stack & Bottom Tabs)
 *   **UI Library:** React Native Paper
-*   **Funcionalidades:** Upload de imagens, Agenda, Autenticação Biométrica (planejado)
+*   **Funcionalidades:** Upload de imagens e Agenda
 
 ---
 
@@ -129,4 +129,4 @@ npm test
 ```
 
 ---
-**Desenvolvido por William Giacomelli**
+**Desenvolvido por Willian Giacomelli**
