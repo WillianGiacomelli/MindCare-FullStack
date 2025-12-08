@@ -6,10 +6,16 @@ import RegisterPsychologist from '../pages/public/register/psychologist/Register
 import PatientDashboard from '../pages/main/dashboard/patient/PatientDashboard';
 import PsychologistDashboard from '../pages/main/dashboard/psychologist/PsychologistDashboard';
 
+import { PrivateRoute, HomeRedirect } from './RouteGuards';
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <HomeRedirect>
+        <Home />
+      </HomeRedirect>
+    ),
   },
   {
     path: "login",
@@ -25,11 +31,19 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard/patient",
-    element: <PatientDashboard />,
+    element: (
+      <PrivateRoute requiredRole="Paciente">
+        <PatientDashboard />
+      </PrivateRoute>
+    ),
   },
   {
     path: "dashboard/psychologist",
-    element: <PsychologistDashboard />,
+    element: (
+      <PrivateRoute requiredRole="Psicologo">
+        <PsychologistDashboard />
+      </PrivateRoute>
+    ),
   },
 ]);
 

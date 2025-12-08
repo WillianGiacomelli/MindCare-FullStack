@@ -1,62 +1,88 @@
-// src/pages/PsychologistDashboard.jsx
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../../../context/AuthContext';
+import scheduleApi from '../../../../services/scheduleApi';
+import ScheduleCreator from '../../../../components/ScheduleCreator';
 
-const MOCK_APPOINTMENTS = [
-  { id: 1, time: '10:00', patientName: 'João da Silva', status: 'Confirmado', type: 'Terapia Cognitiva' },
-  { id: 2, time: '15:30', patientName: 'Maria Oliveira', status: 'Pendente', type: 'Primeira Consulta' },
-];
+interface AppointmentSlot {
+    id: string;
+    date: string;
+    isBooked: boolean;
+    patientName?: string;
+}
 
-const PsychologistDashboard = () => {
-  return (
-    <div className="container py-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="fw-light">Minha Agenda</h2>
-        <button className="btn btn-success">
-          <i className="bi bi-plus-circle me-2"></i>+ Novo Horário
-        </button>
-      </div>
+const PsychologistDashboard: React.FC = () => {
+    const { user, logout } = useContext(AuthContext);
+    const [slots, setSlots] = useState<AppointmentSlot[]>([]);
 
-      <div className="card shadow-sm border-0">
-        <div className="card-body p-0">
-          <div className="table-responsive">
-            <table className="table table-hover mb-0 align-middle">
-              <thead className="table-light">
-                <tr>
-                  <th scope="col" className="ps-4">Horário</th>
-                  <th scope="col">Paciente</th>
-                  <th scope="col">Tipo</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" className="text-end pe-4">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {MOCK_APPOINTMENTS.map((appt) => (
-                  <tr key={appt.id}>
-                    <td className="ps-4 fw-bold">{appt.time}</td>
-                    <td>{appt.patientName}</td>
-                    <td><span className="badge bg-info text-dark">{appt.type}</span></td>
-                    <td>
-                      <span className={`badge ${appt.status === 'Confirmado' ? 'bg-success' : 'bg-warning text-dark'}`}>
-                        {appt.status}
-                      </span>
-                    </td>
-                    <td className="text-end pe-4">
-                      <button className="btn btn-sm btn-outline-secondary me-2">
-                        Prontuário
-                      </button>
-                      <button className="btn btn-sm btn-primary">
-                        Iniciar Vídeo
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+    const fetchSchedule = async () => {
+        if (!user?.id) return;
+        try {
+            const response = await scheduleApi.get(`/appointments/my-schedule/${user.id}`);
+            setSlots(response.data);
+        } catch (error) {
+            console.error('Erro ao buscar agenda:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchSchedule();
+    }, [user]);
+
+    return (
+        <div className="container mt-5">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+                <h2>Painel do Psicólogo</h2>
+                <div>
+                    <span className="me-3">Olá, Dr(a). {user?.name}</span>
+                    <button className="btn btn-outline-danger btn-sm" onClick={logout}>Sair</button>
+                </div>
+            </div>
+
+            <div className="d-flex justify-content-end mb-4">
+                {user?.id && (
+                    <ScheduleCreator psychologistId={user.id} onSuccess={fetchSchedule} />
+                )}
+            </div>
+
+            <div className="card shadow-sm">
+                <div className="card-header">
+                    <h5 className="mb-0">Minha Agenda</h5>
+                </div>
+                <div className="table-responsive">
+                    <table className="table table-hover mb-0">
+                        <thead className="table-light">
+                            <tr>
+                                <th>Data e Hora</th>
+                                <th>Status</th>
+                                <th>Paciente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {slots.length === 0 ? (
+                                <tr>
+                                    <td colSpan={3} className="text-center py-3">Nenhum horário cadastrado.</td>
+                                </tr>
+                            ) : (
+                                slots.map(slot => (
+                                    <tr key={slot.id}>
+                                        <td>{new Date(slot.date).toLocaleString()}</td>
+                                        <td>
+                                            {slot.isBooked ? (
+                                                <span className="badge bg-warning text-dark">Reservado</span>
+                                            ) : (
+                                                <span className="badge bg-success">Livre</span>
+                                            )}
+                                        </td>
+                                        <td>{slot.patientName || '-'}</td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default PsychologistDashboard;
