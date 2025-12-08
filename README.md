@@ -4,7 +4,7 @@ MindCare é uma solução completa (Full Stack) para conectar psicólogos e paci
 
 ---
 
-## 🚀 Tecnologias e Stack Tecnológico
+## 🚀 Tecnologias utilizadas    
 
 ### Backend (Microsserviços)
 *   **Framework:** .NET 10 (C#)
