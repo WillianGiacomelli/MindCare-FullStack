@@ -12,7 +12,7 @@ const Component = () => {
       <Header />
       <CustomerSection />
       <ProfessionalSection />
-      {/* <Testimonial /> */}
+
       <Reason />
       <Footer />
     </>

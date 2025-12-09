@@ -12,7 +12,7 @@ const RegisterPsychologist = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      // Logic: If CRP is filled (and we are in psychologist mode), type is Psicologo
+
       const tipoUsuario = (isPsychologist && data.crp) ? 'Psicologo' : 'Paciente';
 
       const payload = {
@@ -45,7 +45,7 @@ const RegisterPsychologist = () => {
                 </p>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  {/* Nome */}
+
                   <div className="mb-3">
                     <label className="form-label" htmlFor="nome">Nome Completo</label>
                     <input
@@ -58,7 +58,7 @@ const RegisterPsychologist = () => {
                     {errors.nome && <div className="invalid-feedback">Nome é obrigatório.</div>}
                   </div>
 
-                  {/* E-mail */}
+
                   <div className="mb-3">
                     <label className="form-label" htmlFor="email">E-mail</label>
                     <input
@@ -70,7 +70,7 @@ const RegisterPsychologist = () => {
                     />
                   </div>
 
-                  {/* Tipo de Conta Toggle */}
+
                   <div className="form-check mb-3">
                     <input
                       className="form-check-input"
@@ -84,7 +84,7 @@ const RegisterPsychologist = () => {
                     </label>
                   </div>
 
-                  {/* CRP - Conditional */}
+
                   {isPsychologist && (
                     <div className="mb-3">
                       <label className="form-label" htmlFor="crp">Registro CRP</label>
@@ -100,7 +100,7 @@ const RegisterPsychologist = () => {
                     </div>
                   )}
 
-                  {/* Senha */}
+
                   <div className="mb-4">
                     <label className="form-label" htmlFor="senha">Senha</label>
                     <input

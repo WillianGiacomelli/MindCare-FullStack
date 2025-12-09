@@ -27,7 +27,7 @@ const ProfessionalSection = () => {
   ];
 
   return (
-    <div className="bg-white-personalized w-100 text-start mt-5 py-5 px-2">
+    <div className="bg-white-personalized w-100 text-start mt-5 py-5 px-2" id="psychologist">
       <Container>
         <h3 className="text-bold fs-1 w-75 mb-2">
           Para psicólogos : Expanda sua prática e alcance mais pacientes

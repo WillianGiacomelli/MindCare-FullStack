@@ -4,14 +4,14 @@ import RegisterPsychologist from '../psychologist/RegisterPsychologist';
 import { MemoryRouter } from 'react-router-dom';
 import api from '../../../../services/api';
 
-// Mock API
+
 vi.mock('../../../../services/api', () => ({
     default: {
         post: vi.fn(),
     },
 }));
 
-// Mock useNavigate
+
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async () => {
     const actual = await vi.importActual('react-router-dom');
@@ -41,7 +41,7 @@ describe('RegisterPsychologist Component', () => {
         expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument();
         expect(screen.getByLabelText(/senha/i)).toBeInTheDocument();
         expect(screen.getByLabelText(/sou psicólogo/i)).toBeInTheDocument();
-        // CRP should not be visible initially
+
         expect(screen.queryByLabelText(/registro crp/i)).not.toBeInTheDocument();
     });
 

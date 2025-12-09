@@ -12,17 +12,19 @@ function Header() {
             <Navbar expand="md" className='shadow-sm py-3 mb-5 position-sticky top-0 bg-body-tertiary' >
                 <Container className='justify-content-between align-items-center'>
                     <Navbar.Brand href="#home">MindCare</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mx-auto gap-3">
-                        <Nav.Link href="#home">Sobre</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                    </Nav>
-                    <div className='d-sm-block d-md-flex gap-3 align-items-center'> 
-                        <ThemeSwitch />
-                        <Button className='flex-sm-column flex-md-row w-sm-100' variant="outline-info">Encontrar Psicólogo</Button>   
-                        <Link to="/login"><Button className='flex-sm-column flex-md-row w-sm-100' variant="primary">Entrar</Button></Link>
-                    </div>
+                        <Nav className="mx-auto gap-3">
+                            <Nav.Link href="#services">Serviços</Nav.Link>
+                            <Nav.Link href="#customer">Para pacientes</Nav.Link>
+                            <Nav.Link href="#psychologist">Para psicólogos</Nav.Link>
+                            <Nav.Link href="#about">Sobre</Nav.Link>
+                        </Nav>
+                        <div className='d-sm-block d-md-flex gap-3 align-items-center'>
+                            <ThemeSwitch />
+                            <Button className='flex-sm-column flex-md-row w-sm-100' variant="outline-info">Encontrar Psicólogo</Button>
+                            <Link to="/login"><Button className='flex-sm-column flex-md-row w-sm-100' variant="primary">Entrar</Button></Link>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -33,7 +35,7 @@ function Header() {
                 </h1>
                 <p className='mb-4 text-white'>Conectamos você a psicólogos qualificados para sessões por video ou presencial, com total segurança e privacidade.</p>
                 <div className="d-flex justify-content-center gap-3">
-                    <Button className='flex-sm-column flex-md-row w-sm-100' variant="outline-info">Encontrar Psicólogo</Button>   
+                    <Button className='flex-sm-column flex-md-row w-sm-100' variant="outline-info">Encontrar Psicólogo</Button>
                     <Button className='flex-sm-column flex-md-row w-sm-100' variant="dark">Sou psicólogo</Button>
                 </div>
             </Container>

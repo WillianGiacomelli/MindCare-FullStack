@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 
 const Reason = () => {
   return (
-    <Container>
+    <Container id="about">
       <div className="w-100 text-center mt-5 py-5 px-2">
         <h3 className="text-bold fs-1 w-75 mb-2 w-100">Sobre a MindCare</h3>
         <p>

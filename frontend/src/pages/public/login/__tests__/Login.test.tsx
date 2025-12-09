@@ -5,7 +5,7 @@ import Login from '../Login';
 import { AuthContext } from '../../../../context/AuthContext';
 import { MemoryRouter } from 'react-router-dom';
 
-// Mock useNavigate
+
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async () => {
     const actual = await vi.importActual('react-router-dom');
@@ -15,9 +15,9 @@ vi.mock('react-router-dom', async () => {
     };
 });
 
-// Mock AuthContext values
+
 const mockLogin = vi.fn();
-// We use a getter to ensure fresh reference or controllable state if needed
+
 const getMockAuthContext = () => ({
     user: null,
     login: mockLogin,

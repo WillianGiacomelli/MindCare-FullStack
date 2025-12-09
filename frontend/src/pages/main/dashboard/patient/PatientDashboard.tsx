@@ -28,7 +28,7 @@ const PatientDashboard: React.FC = () => {
     const handleBookSlot = async (slotId: string) => {
         if (!user) return;
 
-        // Confirmação simples
+
         if (!window.confirm('Confirma o agendamento?')) return;
 
         try {
@@ -37,7 +37,7 @@ const PatientDashboard: React.FC = () => {
                 patientName: user.name
             });
             alert('Agendamento realizado com sucesso!');
-            fetchAvailableSlots(); // Recarrega a lista para remover o horário agendado
+            fetchAvailableSlots();
         } catch (error) {
             console.error('Erro ao agendar:', error);
             alert('Erro ao realizar agendamento.');

@@ -16,7 +16,7 @@ const Login = () => {
         console.log('Login result:', result);
         if (result.success) {
             console.log('Navigating to /');
-            navigate('/'); // Will be handled by HomeRedirect
+            navigate('/');
         } else {
             console.log('Showing alert');
             alert(result.message || 'Falha no login');

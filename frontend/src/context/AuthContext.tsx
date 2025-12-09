@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode'; // Note que a importação mudou nas versões novas
+import { jwtDecode } from 'jwt-decode';
 import api from '../services/authService';
 
 interface User {
@@ -31,7 +31,7 @@ interface AuthProviderProps {
 
 interface DecodedToken {
   email: string;
-  nameid: string; // ID do usuário
+  nameid: string;
   unique_name: string;
   TipoUsuario: string;
   [key: string]: any;
