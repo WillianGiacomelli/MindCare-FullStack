@@ -4,6 +4,25 @@ MindCare é uma solução completa (Full Stack) para conectar psicólogos e paci
 
 ---
 
+## Pré-visualização da aplicação
+### Web
+<p align="center">
+  <img src="./frontend/src/assets/videos/video.gif" width="500">
+</p>
+
+<p align="center">
+  <img src="./frontend/src/assets/images/1.png" width="300">
+  <img src="./frontend/src/assets/images/2.png" width="300">
+</p>
+
+
+### Mobile
+<p align="center">
+  <img src="./frontend/src/assets/images/3.png" width="300">
+  <img src="./frontend/src/assets/images/4.png" width="300">
+</p>
+
+
 ## 🚀 Tecnologias utilizadas    
 
 ### Backend (Microsserviços)

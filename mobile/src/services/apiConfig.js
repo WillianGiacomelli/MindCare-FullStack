@@ -2,10 +2,8 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 
-// Use o IP da sua máquina se estiver usando um dispositivo físico!
-// Para Android Emulator padrão: 10.0.2.2
-// Para iOS Simulator: localhost
-const DEV_MACHINE_IP = '10.0.2.2'; // <--- ALTERE AQUI SE NECESSÁRIO (ex: '192.168.1.15')
+
+const DEV_MACHINE_IP = '10.0.2.2';
 
 const getBaseUrl = (port) => {
     let host;
@@ -19,20 +17,20 @@ const getBaseUrl = (port) => {
     return url;
 };
 
-// Configuração das instâncias Axios para cada microserviço
+
 const authApi = axios.create({
-    baseURL: getBaseUrl(5107), // Auth Service
+    baseURL: getBaseUrl(5107),
 });
 
 const scheduleApi = axios.create({
-    baseURL: getBaseUrl(5108), // Scheduling Service (ajustado para porta correta se necessário)
+    baseURL: getBaseUrl(5108),
 });
 
 const notesApi = axios.create({
-    baseURL: getBaseUrl(5109), // Notes Service
+    baseURL: getBaseUrl(5109),
 });
 
-// Função para adicionar interceptor de token
+
 const addTokenInterceptor = (apiInstance) => {
     apiInstance.interceptors.request.use(async (config) => {
         const token = await AsyncStorage.getItem('psi_token');
@@ -43,7 +41,7 @@ const addTokenInterceptor = (apiInstance) => {
     });
 };
 
-// Aplicar interceptors
+
 addTokenInterceptor(authApi);
 addTokenInterceptor(scheduleApi);
 addTokenInterceptor(notesApi);

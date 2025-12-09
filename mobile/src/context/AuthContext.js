@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
             console.log('[AuthContext] Resposta do login:', response.status);
 
             const data = response.data;
-            const token = data.token || data.Token; // Handle both cases
+            const token = data.token || data.Token;
             await AsyncStorage.setItem('psi_token', token);
 
             const payload = jwtDecode(token);

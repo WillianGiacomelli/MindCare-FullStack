@@ -11,11 +11,10 @@ const NotesUploadScreen = () => {
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    // ID fixo de paciente para teste conforme solicitado
     const TEST_PATIENT_ID = 'patient-guid-placeholder';
 
     const pickImage = async () => {
-        // Solicitar permissão
+
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status !== 'granted') {
             Alert.alert('Permissão necessária', 'Precisamos de acesso à galeria para anexar imagens.');
@@ -48,7 +47,7 @@ const NotesUploadScreen = () => {
             formData.append('psychologistId', user?.id || '');
 
             if (image) {
-                // Para React Native, o objeto de arquivo deve ter uri, name e type
+
                 const fileName = image.uri.split('/').pop();
                 const fileType = fileName.split('.').pop();
 
