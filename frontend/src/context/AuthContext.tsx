@@ -76,7 +76,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
 
       return { success: true };
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       return { success: false, message: error.response?.data || "Erro ao logar" };
     }

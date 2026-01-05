@@ -1,0 +1,83 @@
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mindcare-sql-server
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourSecurePassword123!
+    ports:
+      - "1433:1433"
+    networks:
+      - mindcare-network
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  auth-api:
+    build:
+      context: ./backend/AuthService
+      dockerfile: Dockerfile
+    container_name: mindcare-auth-api
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=PsiConnectAuthDB;User Id=sa;Password=YourSecurePassword123!;TrustServerCertificate=True;
+      - Jwt__Key=SuperSecretKey@345SuperSecretKey@345
+      - Jwt__Issuer=PsiConnectAuthServer
+      - Jwt__Audience=PsiConnectClients
+    ports:
+      - "5107:8080"
+    depends_on:
+      - sql-server
+    networks:
+      - mindcare-network
+
+  notes-api:
+    build:
+      context: ./backend/NotesService
+      dockerfile: Dockerfile
+    container_name: mindcare-notes-api
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=PsiConnectNotesDB;User Id=sa;Password=YourSecurePassword123!;TrustServerCertificate=True;
+    ports:
+      - "5109:8080"
+    depends_on:
+      - sql-server
+    networks:
+      - mindcare-network
+
+  scheduling-api:
+    build:
+      context: ./backend/SchedulingService
+      dockerfile: Dockerfile
+    container_name: mindcare-scheduling-api
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=PsiConnectSchedulingDB;User Id=sa;Password=YourSecurePassword123!;TrustServerCertificate=True;
+    ports:
+      - "5108:8080"
+    depends_on:
+      - sql-server
+    networks:
+      - mindcare-network
+
+  frontend-web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_AUTH_API_URL=http://localhost:5107/api
+        - VITE_NOTES_API_URL=http://localhost:5109/api
+        - VITE_SCHEDULE_API_URL=http://localhost:5108/api
+    container_name: mindcare-frontend
+    ports:
+      - "3001:80"
+    depends_on:
+      - auth-api
+      - notes-api
+      - scheduling-api
+    networks:
+      - mindcare-network
+
+networks:
+  mindcare-network:
+    driver: bridge
+
+volumes:
+  sqlserver-data:

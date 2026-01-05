@@ -26,10 +26,10 @@ MindCare é uma solução completa (Full Stack) para conectar psicólogos e paci
 ## 🚀 Tecnologias utilizadas    
 
 ### Backend (Microsserviços)
-*   **Framework:** .NET 10 (C#)
+*   **Framework:** .NET 8.0 (C#)
 *   **Banco de Dados:** SQL Server (Entity Framework Core)
 *   **Autenticação:** ASP.NET Core Identity + JWT (JSON Web Tokens)
-*   **Arquitetura:** Microservices (AuthService, ScheduleService, NotesService)
+*   **Arquitetura:** Microservices (AuthService, SchedulingService, NotesService)
 *   **Documentação:** Swagger/OpenAPI
 
 ### Frontend (Web)
@@ -55,28 +55,9 @@ O repositório é organizado como um *monorepo* contendo as três camadas princi
 ```
 mindCare/
 ├── backend/                # Serviços .NET (API)
-│   ├── AuthService/        # Gestão de usuários, login e registro
-│   ├── NotesService/       # Gestão de prontuários e anotações
-│   └── ScheduleService/    # Gestão de agendamentos
-│
-├── frontend/               # Aplicação Web (React/Vite)
-│   ├── src/
-│   │   ├── components/     # Componentes reutilizáveis
-│   │   ├── context/        # Estado global (Auth, etc.)
-│   │   ├── pages/          # Páginas (Login, Dashboard, etc.)
-│   │   │   ├── public/     # Rotas públicas
-│   │   │   └── main/       # Rotas protegidas (MainLayout)
-│   │   ├── services/       # Integração com APIs (Axios)
-│   │   └── __tests__/      # Testes unitários e integração
-│   └── vitest.config.ts    # Configuração de testes
-│
-└── mobile/                 # Aplicação Mobile (Expo)
-    ├── src/
-    │   ├── components/     # Componentes nativos
-    │   ├── context/        # AuthProvider mobile
-    │   ├── screens/        # Telas (Login, Agenda, Upload)
-    │   └── services/       # Configuração de API (IP/Localhost)
-    └── App.js              # Ponto de entrada e Navegação
+├── AuthService/        # Gestão de usuários, login e registro
+├── NotesService/       # Gestão de prontuários e anotações
+└── SchedulingService/    # Gestão de agendamentos
 ```
 
 ---
@@ -106,14 +87,14 @@ mindCare/
 *   SQL Server (LocalDB ou Container)
 
 ### 1. Backend
-Navegue para cada pasta de serviço (`AuthService`, `NotesService`, etc.) e execute:
+Navegue para cada pasta de serviço (`AuthService`, `NotesService`, `SchedulingService`) e execute:
 ```bash
 dotnet restore
 dotnet ef database update # Criar banco de dados
 dotnet run
 ```
 *   AuthService roda na porta: `5107`
-*   ScheduleService roda na porta: `5108`
+*   SchedulingService roda na porta: `5108`
 *   NotesService roda na porta: `5109`
 
 ### 2. Frontend
@@ -132,6 +113,33 @@ npm install
 npx expo start
 ```
 *   **Atenção:** Em `src/services/apiConfig.js`, configure o IP da sua máquina se estiver testando em dispositivo físico (`DEV_MACHINE_IP`).
+
+---
+
+## 🐳 Como Executar via Docker (Recomendado)
+
+Esta versão conta com suporte a **Conteinerização**, permitindo subir todo o ambiente (Banco de Dados + APIs + Frontend) com um único comando.
+
+### Pré-requisitos
+*   [Docker](https://www.docker.com/products/docker-desktop/) e [Docker Compose](https://docs.docker.com/compose/) instalados.
+
+### Passo a passo
+1.  **Clone o repositório** (se ainda não o fez).
+2.  Na raiz do projeto, execute:
+    ```bash
+    docker compose up --build
+    ```
+3.  O Docker irá baixar as imagens, compilar os microsserviços e o frontend, e configurar o banco de dados SQL Server automaticamente.
+
+### Portas e Acessos
+*   **Frontend Web:** `http://localhost:3001`
+*   **Auth API:** `http://localhost:5107/swagger`
+*   **Scheduling API:** `http://localhost:5108/swagger`
+*   **Notes API:** `http://localhost:5109/swagger`
+*   **SQL Server:** Porta `1433` (interno ao Docker)
+
+> [!NOTE]
+> As migrações do banco de dados são aplicadas automaticamente ao iniciar os containers.
 
 ---
 

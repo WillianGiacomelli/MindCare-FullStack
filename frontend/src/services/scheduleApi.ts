@@ -1,7 +1,7 @@
 import axios, { type InternalAxiosRequestConfig } from 'axios';
 
 const scheduleApi = axios.create({
-    baseURL: 'http://localhost:5108/api',
+    baseURL: import.meta.env.VITE_SCHEDULE_API_URL || 'http://localhost:5108/api',
 });
 
 scheduleApi.interceptors.request.use((config: InternalAxiosRequestConfig) => {
